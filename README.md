@@ -13,7 +13,7 @@ API Подсказок DaData.ru для C# / .NET
 
 ### 1. Подключите библиотеку
 
-Прежде всего, скачайте [бинарники](https://github.com/hflabs/suggestions-csharp/releases/tag/v1.0) и подключите их к своему проекту.
+Прежде всего, скачайте [бинарники](https://github.com/hflabs/suggestions-csharp/releases/tag/v15.10) и подключите их к своему проекту.
 
 Внешние зависимости:
 
