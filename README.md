@@ -13,7 +13,7 @@ API Подсказок DaData.ru для C# / .NET
 
 ### 1. Подключите библиотеку
 
-Прежде всего, скачайте [бинарники](https://github.com/hflabs/suggestions-csharp/releases/tag/v15.10) и подключите их к своему проекту.
+Прежде всего, скачайте [бинарники](https://github.com/hflabs/suggestions-csharp/releases/tag/16.10) и подключите их к своему проекту.
 
 Внешние зависимости:
 
@@ -27,7 +27,7 @@ API Подсказок DaData.ru для C# / .NET
 
 ### 3. Пользуйтесь API!
 
-Примеры вызова API можно посмотреть в юнит-тестах (`SuggestClientTest`) или ниже по тексту.
+Примеры вызова API смотрите в юнит-тестах (`SuggestClientTest`) или ниже по тексту.
 
 Использование
 ---------
@@ -41,10 +41,7 @@ API Подсказок DaData.ru для C# / .NET
 
 ```csharp
 var token = "ВАШ API-КЛЮЧ";
-// для бесплатных подсказок
-var url = "https://dadata.ru/api/v2";
-// для платных подсказок
-// var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs"; 
+var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs";
 var api = new SuggestClient(token, url);
 var query = "москва серпухов";
 var response = api.QueryAddress(query);
