@@ -31,9 +31,38 @@ namespace suggestionscsharp {
 
     public class SuggestQuery {
         public string query { get; set; }
+        public int count { get; set; }
         public SuggestQuery(string query) {
             this.query = query;
         }
+    }
+
+    public class AddressSuggestQuery : SuggestQuery {
+        public AddressData[] locations { get; set; }
+        public AddressData[] locations_boost { get; set; }
+        public AddressBound from_bound { get; set; }
+        public AddressBound to_bound { get; set; }
+        public bool restrict_value { get; set; }
+        public AddressSuggestQuery(string query) : base(query) { }
+    }
+
+    public class BankSuggestQuery : SuggestQuery {
+        public PartyStatus[] status { get; set; }
+        public BankType[] type { get; set; }
+        public BankSuggestQuery(string query) : base(query) { }
+    }
+
+    public class FioSuggestQuery : SuggestQuery {
+        public FioPart[] parts { get; set; }
+        public FioSuggestQuery(string query) : base(query) { }
+    }
+
+    public class PartySuggestQuery : SuggestQuery {
+        public AddressData[] locations { get; set; }
+        public AddressData[] locations_boost { get; set; }
+        public PartyStatus[] status { get; set; }
+        public PartyType type { get; set; }
+        public PartySuggestQuery(string query) : base(query) { }
     }
 
     public class AddressData {
@@ -82,6 +111,13 @@ namespace suggestionscsharp {
         public string qc_geo                { get; set; }
     }
 
+    public class AddressBound {
+        public string value { get; set; }
+        public AddressBound(string name) {
+            this.value = name;
+        }
+    }
+
     public class BankData {
         public AddressData address              { get; set; }
         public string bic                       { get; set; }
@@ -110,8 +146,8 @@ namespace suggestionscsharp {
 
     public enum BankType {
         BANK,
-        BANK_BRANCH,
         NKO,
+        BANK_BRANCH,
         NKO_BRANCH,
         RKC,
         OTHER
@@ -128,6 +164,12 @@ namespace suggestionscsharp {
         public string name          { get; set; }
         public string patronymic    { get; set; }
         public string gender        { get; set; }
+    }
+
+    public enum FioPart {
+        SURNAME,
+        NAME,
+        PATRONYMIC
     }
 
     public class PartyData {
@@ -199,34 +241,34 @@ namespace suggestionscsharp {
         public class Suggestions: Suggestion {
             public AddressData data { get; set; }
         }
-        public List<Suggestions> suggestionss { get; set; }
+        public List<Suggestions> suggestions { get; set; }
     }
 
     public class SuggestBankResponse {
         public class Suggestions: Suggestion {
             public BankData data { get; set; }
         }
-        public List<Suggestions> suggestionss { get; set; }
+        public List<Suggestions> suggestions { get; set; }
     }
 
     public class SuggestEmailResponse {
         public class Suggestions: Suggestion {
             public EmailData data { get; set; }
         }
-        public List<Suggestions> suggestionss { get; set; }
+        public List<Suggestions> suggestions { get; set; }
     }
 
     public class SuggestFioResponse {
         public class Suggestions: Suggestion {
             public FioData data { get; set; }
         }
-        public List<Suggestions> suggestionss { get; set; }
+        public List<Suggestions> suggestions { get; set; }
     }
 
     public class SuggestPartyResponse {
         public class Suggestions: Suggestion {
             public PartyData data { get; set; }
         }
-        public List<Suggestions> suggestionss { get; set; }
+        public List<Suggestions> suggestions { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace suggestionscsharp {
 
         RestClient client;
         string token;
-        ContentType contentType = ContentType.XML;
+        ContentType contentType = ContentType.JSON;
 
         public IWebProxy Proxy {
             get { return client.Proxy; }
@@ -33,36 +33,48 @@ namespace suggestionscsharp {
         }
 
         public SuggestAddressResponse QueryAddress(string address) {
+            return QueryAddress(new AddressSuggestQuery(address));
+        }
+
+        public SuggestAddressResponse QueryAddress(AddressSuggestQuery query) {
             var request = new RestRequest(ADDRESS_RESOURCE, Method.POST);
-            var query = new SuggestQuery(address);
-            return Execute<SuggestAddressResponse>(request, query, this.contentType);
+            return Execute<SuggestAddressResponse>(request, query);
         }
 
         public SuggestBankResponse QueryBank(string bank) {
+            return QueryBank(new BankSuggestQuery(bank));
+        }
+
+        public SuggestBankResponse QueryBank(BankSuggestQuery query) {
             var request = new RestRequest(BANK_RESOURCE, Method.POST);
-            var query = new SuggestQuery(bank);
-            return Execute<SuggestBankResponse>(request, query, this.contentType);
+            return Execute<SuggestBankResponse>(request, query);
         }
 
         public SuggestEmailResponse QueryEmail(string email) {
             var request = new RestRequest(EMAIL_RESOURCE, Method.POST);
             var query = new SuggestQuery(email);
-            return Execute<SuggestEmailResponse>(request, query, this.contentType);
+            return Execute<SuggestEmailResponse>(request, query);
         }
 
         public SuggestFioResponse QueryFio(string fio) {
+            return QueryFio(new FioSuggestQuery(fio));
+        }
+
+        public SuggestFioResponse QueryFio(FioSuggestQuery query) {
             var request = new RestRequest(FIO_RESOURCE, Method.POST);
-            var query = new SuggestQuery(fio);
-            return Execute<SuggestFioResponse>(request, query, this.contentType);
+            return Execute<SuggestFioResponse>(request, query);
         }
 
         public SuggestPartyResponse QueryParty(string party) {
-            var request = new RestRequest(PARTY_RESOURCE, Method.POST);
-            var query = new SuggestQuery(party);
-            return Execute<SuggestPartyResponse>(request, query, this.contentType);
+            return QueryParty(new PartySuggestQuery(party));
         }
 
-        private T Execute<T>(RestRequest request, SuggestQuery query, ContentType contentType) where T : new() {
+        public SuggestPartyResponse QueryParty(PartySuggestQuery query) {
+            var request = new RestRequest(PARTY_RESOURCE, Method.POST);
+            return Execute<SuggestPartyResponse>(request, query);
+        }
+
+        private T Execute<T>(RestRequest request, SuggestQuery query) where T : new() {
             request.AddHeader("Authorization", "Token " + this.token);
             request.AddHeader("Content-Type", contentType.Name);
             request.AddHeader("Accept", contentType.Name);
