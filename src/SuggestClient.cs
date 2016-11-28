@@ -24,7 +24,7 @@ namespace suggestionscsharp {
 
         static SuggestClient() {
             // use SSL v3
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
         }
 
         public SuggestClient(string token, string baseUrl) {
