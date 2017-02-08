@@ -11,7 +11,7 @@ namespace suggestionscsharp {
 
         [SetUp]
         public void SetUp() {
-            var token = "ВАШ API-КЛЮЧ";
+            var token = Environment.GetEnvironmentVariable("DADATA_API_KEY");
             var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs";
             this.api = new SuggestClient(token, url);
         }
@@ -103,6 +103,8 @@ namespace suggestionscsharp {
             var query = "сбербанк";
             var response = api.QueryParty(query);
             Assert.AreEqual("7707083893", response.suggestions[0].data.inn);
+            Assert.AreEqual("г Москва, ул Вавилова, д 19", response.suggestions[0].data.address.value);
+            Assert.AreEqual("117312", response.suggestions[0].data.address.data.postal_code);
             Console.WriteLine(string.Join("\n", response.suggestions));
         }
 
