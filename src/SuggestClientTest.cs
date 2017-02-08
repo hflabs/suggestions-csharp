@@ -25,10 +25,21 @@ namespace suggestionscsharp {
         }
 
         [Test]
-        public void SuggestAddressLocationsTest() {
+        public void SuggestAddressLocationsKladrTest() {
             var query = new AddressSuggestQuery("ватутина");
             var location = new AddressData();
             location.kladr_id = "65";
+            query.locations = new AddressData[] { location };
+            var response = api.QueryAddress(query);
+            Assert.AreEqual("693022", response.suggestions[0].data.postal_code);
+            Console.WriteLine(string.Join("\n", response.suggestions));
+        }
+
+        [Test]
+        public void SuggestAddressLocationsFiasCityTest() {
+            var query = new AddressSuggestQuery("ватутина");
+            var location = new AddressData();
+            location.city_fias_id = "44388ad0-06aa-49b0-bbf9-1704629d1d68"; // Южно-Сахалинск
             query.locations = new AddressData[] { location };
             var response = api.QueryAddress(query);
             Assert.AreEqual("693022", response.suggestions[0].data.postal_code);
