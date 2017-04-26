@@ -61,7 +61,7 @@ namespace suggestionscsharp {
         public AddressData[] locations { get; set; }
         public AddressData[] locations_boost { get; set; }
         public PartyStatus[] status { get; set; }
-        public PartyType type { get; set; }
+        public PartyType? type { get; set; }
         public PartySuggestQuery(string query) : base(query) { }
     }
 
