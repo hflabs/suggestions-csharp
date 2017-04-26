@@ -129,6 +129,33 @@ namespace suggestionscsharp {
         public string qc_geo                  { get; set; }
     }
 
+    public static class FiasLevels {
+        public const string Country        = "0";
+        public const string Region         = "1";
+        public const string Area           = "3";
+        public const string City           = "4";
+        public const string Settlement     = "6";
+        public const string Street         = "7";
+        public const string House          = "8";
+        public const string ForeignOrEmpty = "-1";
+    }
+
+    public static class CapitalMarkers {
+        public const string None                = "0";
+        public const string AreaCenter          = "1";
+        public const string RegionCenter        = "2";
+        public const string AreaAndRegionCenter = "3";
+    }
+
+    public static class GeoQualityCodes {
+        public const string Exact        = "0";
+        public const string NearestHouse = "1";
+        public const string Street       = "2";
+        public const string Settlement   = "3";
+        public const string City         = "4";
+        public const string NotFound     = "5";
+    }
+
     public class AddressBound {
         public string value { get; set; }
         public AddressBound(string name) {
