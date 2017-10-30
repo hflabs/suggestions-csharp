@@ -13,7 +13,7 @@ API Подсказок DaData.ru для C# / .NET
 
 ### 1. Подключите библиотеку
 
-Прежде всего, скачайте [бинарники](https://github.com/hflabs/suggestions-csharp/releases/tag/17.2) и подключите их к своему проекту.
+Прежде всего, скачайте [бинарники](https://github.com/hflabs/suggestions-csharp/releases/latest) и подключите их к своему проекту.
 
 Внешние зависимости:
 
@@ -21,9 +21,9 @@ API Подсказок DaData.ru для C# / .NET
 - [NUnit](http://www.nunit.org/) (для тестов)
 
 
-### 2. Получите API-ключи
+### 2. Получите API-ключ
 
-Зарегистрируйтесь на [dadata.ru](https://dadata.ru) и получите API-ключи в [личном кабинете](https://dadata.ru/profile/#info).
+Зарегистрируйтесь на [dadata.ru](https://dadata.ru) и получите API-ключ в [личном кабинете](https://dadata.ru/profile/#info).
 
 ### 3. Пользуйтесь API!
 
