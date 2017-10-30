@@ -18,9 +18,12 @@ namespace suggestionscsharp {
 
         [Test]
         public void SuggestAddressTest() {
-            var query = "москва турчанинов 6";
+            var query = "москва турчанинов 6с2";
             var response = api.QueryAddress(query);
-            Assert.AreEqual("119034", response.suggestions[0].data.postal_code);
+            var address_data = response.suggestions[0].data;
+            Assert.AreEqual("119034", address_data.postal_code);
+            Assert.AreEqual("7704", address_data.tax_office);
+            Assert.AreEqual("Кропоткинская", address_data.metro[0].name);
             Console.WriteLine(string.Join("\n", response.suggestions));
         }
 
@@ -111,11 +114,14 @@ namespace suggestionscsharp {
 
         [Test]
         public void SuggestPartyTest() {
-            var query = "сбербанк";
+            var query = "7707083893";
             var response = api.QueryParty(query);
-            Assert.AreEqual("7707083893", response.suggestions[0].data.inn);
-            Assert.AreEqual("г Москва, ул Вавилова, д 19", response.suggestions[0].data.address.value);
-            Assert.AreEqual("117312", response.suggestions[0].data.address.data.postal_code);
+            var party = response.suggestions[0];
+            var address = response.suggestions[0].data.address;
+            Assert.AreEqual("7707083893", party.data.inn);
+            Assert.AreEqual("г Москва, ул Вавилова, д 19", address.value);
+            Assert.AreEqual("117997 ГОРОД МОСКВА, УЛИЦА ВАВИЛОВА, дом 19", address.data.source);
+            Assert.AreEqual("117312", address.data.postal_code);
             Console.WriteLine(string.Join("\n", response.suggestions));
         }
 
