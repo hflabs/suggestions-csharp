@@ -151,6 +151,8 @@ namespace suggestionscsharp {
         public string beltway_hit      { get; set; }
         public string beltway_distance { get; set; }
 
+        public List<string> history_values { get; set; }
+
         public List<MetroData> metro { get; set; }
     }
 

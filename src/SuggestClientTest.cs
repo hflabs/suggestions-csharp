@@ -60,6 +60,15 @@ namespace suggestionscsharp {
         }
 
         [Test]
+        public void SuggestAddressHistoryTest() {
+            var query = "москва хабар";
+            var response = api.QueryAddress(query);
+            var address_data = response.suggestions[0].data;
+            Assert.AreEqual("ул Черненко", address_data.history_values[0]);
+            Console.WriteLine(string.Join("\n", response.suggestions));
+        }
+
+        [Test]
         public void SuggestBankTest() {
             var query = "сбербанк";
             var response = api.QueryBank(query);
