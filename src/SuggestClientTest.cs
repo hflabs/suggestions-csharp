@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 
@@ -73,6 +74,7 @@ namespace suggestionscsharp {
             var query = "сбербанк";
             var response = api.QueryBank(query);
             Assert.AreEqual("044525225", response.suggestions[0].data.bic);
+            Assert.AreEqual("Москва", response.suggestions[0].data.address.data.city);
             Console.WriteLine(response.suggestions[0].data.opf.type);
             Console.WriteLine(response.suggestions[0].data.state.status);
             Console.WriteLine(string.Join("\n", response.suggestions));
@@ -151,7 +153,6 @@ namespace suggestionscsharp {
             Assert.AreEqual("773165008890", response.suggestions[0].data.inn);
             Console.WriteLine(string.Join("\n", response.suggestions));
         }
-
     }
 }
 

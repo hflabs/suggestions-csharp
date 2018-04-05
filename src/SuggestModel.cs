@@ -170,7 +170,7 @@ namespace suggestionscsharp {
     }
 
     public class BankData {
-        public AddressData address  { get; set; }
+        public SuggestAddressResponse.Suggestions address { get; set; }
 
         public string bic                   { get; set; }
         public string swift                 { get; set; }

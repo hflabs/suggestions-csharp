@@ -7,7 +7,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>suggestionscsharp</RootNamespace>
     <AssemblyName>suggestions-csharp</AssemblyName>
-    <ReleaseVersion>1.0</ReleaseVersion>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
