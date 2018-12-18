@@ -40,6 +40,18 @@ namespace suggestionscsharp {
         }
 
         [Test]
+        public void SuggestAddressLocationsMultipleLocationsTest() {
+            var query = new AddressSuggestQuery("зеленоград");
+            query.locations = new[] {
+                new AddressData() { kladr_id = "50" },
+                new AddressData() { kladr_id = "77" }
+            };
+            var response = api.QueryAddress(query);
+            Assert.AreEqual("Зеленоград", response.suggestions[0].data.city);
+            Console.WriteLine(string.Join("\n", response.suggestions));
+        }
+
+        [Test]
         public void SuggestAddressLocationsFiasCityTest() {
             var query = new AddressSuggestQuery("ватутина");
             var location = new AddressData();
